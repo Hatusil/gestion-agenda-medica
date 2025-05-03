@@ -1,0 +1,3 @@
+# Entradas específicas del backend
+dist/
+.env

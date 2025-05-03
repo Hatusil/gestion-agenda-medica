@@ -1,0 +1,28 @@
+const express = require('express');
+const app = express();
+const PORT = 5000;
+const { testConnection } = require('./config/database');
+
+// Probar conexión
+testConnection();
+
+app.get('/', (req, res) => {
+  res.send('Hola desde el backend!');
+});
+
+const { pool } = require('./config/database');
+
+app.get('/test-db', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT 1 + 1 AS resultado');
+    res.json(rows[0]);
+  } catch (error) {
+    console.error('Error en /test-db:', error);
+    res.status(500).send('Error al consultar la base de datos');
+  }
+});
+
+
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});
