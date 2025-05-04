@@ -153,6 +153,29 @@ Se crean a partir de `master` para solucionar errores críticos que requieren un
 - **Separación clara de entornos**: Permite gestionar entornos de desarrollo, prueba y producción con facilidad.
 - **Facilidad de gestión de versiones**: Las ramas release y hotfix permiten gestionar lanzamientos y correcciones sin interrumpir el desarrollo principal.
 
+---
+
+# Convenciones de Commits
+
+Usaremos **Conventional Commits** para estandarizar los mensajes y mejorar la claridad en el historial de cambios.
+
+## Tipos de commits
+
+- `feat:` Nueva característica
+- `fix:` Corrección de error
+- `docs:` Documentación
+- `style:` Cambios de estilo (sin modificaciones funcionales)
+- `refactor:` Refactorización de código
+- `test:` Añadir o corregir tests
+- `chore:` Tareas de mantenimiento
+
+## Ejemplos
+
+```plaintext
+feat(turnos): añadir validación de superposición de horarios
+fix(auth): corregir error en verificación de token
+docs(readme): actualizar instrucciones de despliegue
+
 
 ---
 
