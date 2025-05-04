@@ -146,7 +146,7 @@ Se crean a partir de `master` para solucionar errores críticos que requieren un
                       │
             ┌────────┴────────┐
           Feature1        Feature2
-
+```
 
 ### Ventajas de Git Flow:
 - **Estructura clara**: Ideal para proyectos grandes y complejos.
@@ -175,7 +175,7 @@ Usaremos **Conventional Commits** para estandarizar los mensajes y mejorar la cl
 feat(turnos): añadir validación de superposición de horarios
 fix(auth): corregir error en verificación de token
 docs(readme): actualizar instrucciones de despliegue
-
+```
 
 ---
 
