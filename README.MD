@@ -9,10 +9,29 @@ Sistema fullstack para gestionar turnos médicos, pacientes, profesionales y ser
 ```bash
 gestion-agenda-medica/
 │
-├── client/ # Frontend (React)
-├── server/ # Backend (Node.js/Express)
+├── client/                # Frontend React
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── App.js
+│   ├── .env.example
+│   └── Dockerfile
+│
+├── server/                # Backend Node/Express
+│   ├── controllers/
+│   ├── routes/
+│   ├── models/
+│   ├── middlewares/
+│   ├── config/
+│   ├── index.js
+│   ├── .env.example
+│   └── Dockerfile
+│
 ├── docker-compose.yml
-└── README.md # <--------- 
+├── README.md
+└── .gitignore
+
 ```
 
 ---

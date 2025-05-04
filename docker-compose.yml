@@ -26,6 +26,8 @@ services:
       DB_NAME: agenda
     depends_on:
       - mysql
+    volumes:
+      - ./server:/app #Esto es un bind mount. Todo lo que esté en ./server en tu máquina local, se verá dentro del contenedor en /app.
 
   frontend:
     build: ./client
