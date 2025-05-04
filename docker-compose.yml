@@ -6,11 +6,12 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_DATABASE: agenda
+      MYSQL_DATABASE: pp4_clinica
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./server/sql:/docker-entrypoint-initdb.d
     restart: unless-stopped
 
   frontend:
