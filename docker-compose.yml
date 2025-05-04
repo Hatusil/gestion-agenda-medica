@@ -5,14 +5,13 @@ services:
     image: mysql:8
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: agenda
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    restart: unless-stopped
 
   frontend:
     build:
@@ -24,10 +23,11 @@ services:
     volumes:
       - ./client:/app
       - /app/node_modules
-    stdin_open: true
-    tty: true
     env_file:
       - ./client/.env
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
 
   backend:
     build: ./server
@@ -37,10 +37,11 @@ services:
     volumes:
       - ./server:/app
       - /app/node_modules
-    depends_on:
-      - mysql
     env_file:
       - ./server/.env
+    depends_on:
+      - mysql
+    restart: unless-stopped
 
 volumes:
   mysql_data:
