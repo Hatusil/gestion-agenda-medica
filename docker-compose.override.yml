@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+
+  backend:
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/app #Esto es un bind mount. Todo lo que esté en ./server en tu máquina local, se verá dentro del contenedor en /app.

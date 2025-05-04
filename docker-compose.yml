@@ -14,28 +14,33 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
 
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+    env_file:
+      - ./client/.env
+
   backend:
     build: ./server
     container_name: backend
     ports:
       - "5000:5000"
-    environment:
-      DB_HOST: mysql
-      DB_USER: user
-      DB_PASSWORD: pass
-      DB_NAME: agenda
+    volumes:
+      - ./server:/app
+      - /app/node_modules
     depends_on:
       - mysql
-    volumes:
-      - ./server:/app #Esto es un bind mount. Todo lo que esté en ./server en tu máquina local, se verá dentro del contenedor en /app.
-
-  frontend:
-    build: ./client
-    container_name: frontend
-    ports:
-      - "3000:80"
-    depends_on:
-      - backend
+    env_file:
+      - ./server/.env
 
 volumes:
   mysql_data:

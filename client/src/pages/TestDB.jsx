@@ -4,7 +4,7 @@ export default function TestDB() {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:5000/test-db')
+    fetch(`${process.env.REACT_APP_API_URL}`)
       .then(res => res.json())
       .then(data => setResult(data.resultado))
       .catch(err => console.error('Error al conectar:', err));

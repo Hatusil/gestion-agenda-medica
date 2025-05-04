@@ -1,0 +1,12 @@
+FROM node:18
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+# No copiamos el resto del código, se monta con volumen
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
