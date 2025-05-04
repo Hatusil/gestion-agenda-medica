@@ -112,6 +112,73 @@ docker-compose up --build # Reconstruir imágenes
 
 ---
 
+# Metodología Git Flow
+
+Git Flow es una metodología para la gestión de versiones en Git que facilita el desarrollo colaborativo y el mantenimiento de un proyecto. Su estructura permite una clara separación entre distintas fases del desarrollo, asegurando estabilidad en producción mientras se trabaja en nuevas funcionalidades.
+
+## Flujo de trabajo
+
+Cada rama tiene un propósito específico dentro del ciclo de vida del desarrollo:
+
+### `master`
+Contiene la versión estable y final del proyecto. Solo se actualiza con cambios ya validados que provienen de `release` o `hotfix`.
+
+### `develop`
+Actúa como la rama principal para el desarrollo activo. Todas las nuevas funcionalidades y mejoras se integran aquí antes de ser lanzadas a producción.
+
+### `feature/`
+Se crean a partir de `develop` para desarrollar nuevas características de manera aislada. Una vez completadas, se integran nuevamente a `develop` para ser probadas.
+
+### `release/`
+Son utilizadas para preparar el lanzamiento de una nueva versión estable. Permiten realizar ajustes finales antes de fusionar los cambios en `master` y `develop`.
+
+### `hotfix/`
+Se crean a partir de `master` para solucionar errores críticos que requieren una corrección inmediata en producción. Tras aplicar los cambios, se fusionan en `master` y `develop`.
+
+## Visualización del flujo
+
+```plaintext
+           ┌───────── Master ─────────┐
+           │                          │
+       Hotfix                     Release
+           │                          │
+           ├────────── Develop ───────┤
+                      │
+            ┌────────┴────────┐
+          Feature1        Feature2
+
+
+### Ventajas de Git Flow:
+- **Estructura clara**: Ideal para proyectos grandes y complejos.
+- **Separación clara de entornos**: Permite gestionar entornos de desarrollo, prueba y producción con facilidad.
+- **Facilidad de gestión de versiones**: Las ramas release y hotfix permiten gestionar lanzamientos y correcciones sin interrumpir el desarrollo principal.
+
+---
+
+# Convenciones de Commits
+
+Usaremos **Conventional Commits** para estandarizar los mensajes y mejorar la claridad en el historial de cambios.
+
+## Tipos de commits
+
+- `feat:` Nueva característica
+- `fix:` Corrección de error
+- `docs:` Documentación
+- `style:` Cambios de estilo (sin modificaciones funcionales)
+- `refactor:` Refactorización de código
+- `test:` Añadir o corregir tests
+- `chore:` Tareas de mantenimiento
+
+## Ejemplos
+
+```plaintext
+feat(turnos): añadir validación de superposición de horarios
+fix(auth): corregir error en verificación de token
+docs(readme): actualizar instrucciones de despliegue
+
+
+---
+
 ## 👥 Colaboradores
 
 @Hatusil
